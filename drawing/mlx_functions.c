@@ -38,17 +38,4 @@ void	ft_images(t_data *img)
 		exit_error("ERROR : MLX");
 }
 
-void	raycasting(t_data *img)
-{
-	img = init_func(img);
-	ft_images(img);
-	img->height = (img->map->len - 1) * 50;
-	img->width = (img->map->long_line) * 50;
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
-			&img->line_length, &img->endian);
-	draw_world(img);
-	cast_rays(img);
-	destroy_window(img);
-	mlx_hook(img->win, 2, 0L, move_player, img);
-	mlx_loop(img->mlx);
-}
+

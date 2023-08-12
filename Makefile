@@ -21,17 +21,21 @@ SRC = cub.c \
 	parsing/parisng.c \
 	parsing/textures.c \
 	parsing/colores.c \
-	drawing/2d_map.c \
+	drawing/rendering.c \
 	drawing/mlx_functions.c \
 	drawing/window.c \
-	drawing/player_movements.c \
-	drawing/cast_rays.c \
+	drawing/movements.c \
+	drawing/raycasting.c \
 	drawing/rotation.c \
 	drawing/textures.c \
-	drawing/iterator.c \
-	drawing/init_val.c \
-	drawing/cast_rays_utils.c \
-	drawing/cast_rays_utiles1.c \
+	drawing/side_1.c \
+	drawing/side_2.c \
+	drawing/side_3.c \
+	drawing/side_4.c \
+	drawing/side_5.c \
+	drawing/side_6.c \
+
+	
 	
 NAME = cub3D
 

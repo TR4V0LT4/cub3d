@@ -28,8 +28,8 @@ int	move_player(int keycode, t_data *img)
 		turn_right(img);
 	if (keycode == 123)
 		turn_left(img);
-	draw_world(img);
-	cast_rays(img);
+	background(img);
+	raycasting(img);
 	return (0);
 }
 

@@ -26,7 +26,6 @@
 # define FALSE 0
 # define SPACE 32
 # define TAB  9
-# define TRUE 1
 # define FALSE 0
 # define SPACE 32
 # define TAB  9
@@ -35,6 +34,11 @@
 # define S_KEY 1
 # define D_KEY 2
 # define ESC_KEY 53
+
+# define NORTH 8
+# define WEST 4
+# define EAST 6
+# define SOUTH 2
 
 typedef int	t_bool;
 
@@ -136,7 +140,7 @@ unsigned int	so_texture(t_data *img, double x, double y);
 unsigned int	ea_texture(t_data *img, double x, double y);
 t_data			*init_func(t_data *img);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void			cast_rays(t_data *img);
+void			raycasting(t_data *img);
 void			draw_rays(t_data *img, float ray, int color);
 void			ft_images(t_data *img);
 void			destroy_window(t_data *game);
@@ -154,9 +158,9 @@ void			down_left_rays(t_data *img);
 void			right_side_angle(t_data *img, double *x);
 void			left_side_angle(t_data *img, double *x);
 void			ft_images(t_data *img);
-void			raycasting(t_data *img);
+void			start(t_data *img);
 void			dala(t_data *img, double ray, int color, double r);
-void			draw_world(t_data *img);
+void			background(t_data *img);
 void			debug(t_data *img);
 void			draw_rays(t_data *img, float ray, int color);
 double			cast_rays1(t_data *img, float view, double *rx);

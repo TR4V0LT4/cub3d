@@ -12,67 +12,22 @@
 
 #include "../cub.h"
 
-void	up_right_rays(t_data *img)
+void	start(t_data *img)
 {
-	double	ray1;
-	double	ray2;
-	double	rx;
-	double	ry;
-
-	ray1 = cast_rays1(img, img->map->view, &rx);
-	ray2 = cast_rays2(img, img->map->view, &ry);
-	if (ray2 && ray1 > ray2)
-		dala(img, ray2, 2, ry * img->ea.w);
-	else
-		dala(img, ray1, 1, rx * img->no.w);
+	img = init_func(img);
+	ft_images(img);
+	img->height = (img->map->len - 1) * 50;
+	img->width = (img->map->long_line) * 50;
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
+	background(img);
+	raycasting(img);
+	destroy_window(img);
+	mlx_hook(img->win, 2, 0L, move_player, img);
+	mlx_loop(img->mlx);
 }
 
-void	up_left_rays(t_data *img)
-{
-	double	ray3;
-	double	ray4;
-	double	rx;
-	double	ry;
-
-	ray4 = cast_rays4(img, img->map->view, &ry);
-	ray3 = cast_rays3(img, img->map->view, &rx);
-	if (ray3 && ray4 > ray3)
-		dala(img, ray3, 3, rx * img->we.w);
-	else
-		dala(img, ray4, 1, ry * img->no.w);
-}
-
-void	down_right_rays(t_data *img)
-{
-	double	ray2;
-	double	ray6;
-	double	ry;
-	double	rx;
-
-	ray6 = cast_rays6(img, img->map->view, &ry);
-	ray2 = cast_rays2(img, img->map->view, &rx);
-	if (ray2 && ray6 > ray2)
-		dala(img, ray2, 2, rx * img->ea.w);
-	else
-		dala(img, ray6, 4, ry * img->so.w);
-}
-
-void	down_left_rays(t_data *img)
-{
-	double	ray3;
-	double	ray5;
-	double	rx;
-	double	ry;
-
-	ray5 = cast_rays5(img, img->map->view, &ry);
-	ray3 = cast_rays3(img, img->map->view, &rx);
-	if (ray3 && ray5 > ray3)
-		dala(img, ray3, 3, rx * img->we.w);
-	else
-		dala(img, ray5, 4, ry * img->so.w);
-}
-
-void	cast_rays(t_data *img)
+void	raycasting(t_data *img)
 {
 	double	i;
 
@@ -100,3 +55,64 @@ void	cast_rays(t_data *img)
 	}
 	mlx_put_image_to_window(img->mlx, img->win, img->img, 0, 0);
 }
+
+void	up_right_rays(t_data *img)
+{
+	double	ray1;
+	double	ray2;
+	double	rx;
+	double	ry;
+
+	ray1 = cast_rays1(img, img->map->view, &rx);
+	ray2 = cast_rays2(img, img->map->view, &ry);
+	if (ray2 && ray1 > ray2)
+		dala(img, ray2, EAST, ry * img->ea.w);
+	else
+		dala(img, ray1, NORTH, rx * img->no.w);
+}
+
+void	up_left_rays(t_data *img)
+{
+	double	ray3;
+	double	ray4;
+	double	rx;
+	double	ry;
+
+	ray4 = cast_rays4(img, img->map->view, &ry);
+	ray3 = cast_rays3(img, img->map->view, &rx);
+	if (ray3 && ray4 > ray3)
+		dala(img, ray3, WEST, rx * img->we.w);
+	else
+		dala(img, ray4, NORTH, ry * img->no.w);
+}
+
+void	down_right_rays(t_data *img)
+{
+	double	ray2;
+	double	ray6;
+	double	ry;
+	double	rx;
+
+	ray6 = cast_rays6(img, img->map->view, &ry);
+	ray2 = cast_rays2(img, img->map->view, &rx);
+	if (ray2 && ray6 > ray2)
+		dala(img, ray2, EAST, rx * img->ea.w);
+	else
+		dala(img, ray6, SOUTH, ry * img->so.w);
+}
+
+void	down_left_rays(t_data *img)
+{
+	double	ray3;
+	double	ray5;
+	double	rx;
+	double	ry;
+
+	ray5 = cast_rays5(img, img->map->view, &ry);
+	ray3 = cast_rays3(img, img->map->view, &rx);
+	if (ray3 && ray5 > ray3)
+		dala(img, ray3, WEST, rx * img->we.w);
+	else
+		dala(img, ray5, SOUTH, ry * img->so.w);
+}
+

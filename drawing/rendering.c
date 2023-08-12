@@ -43,20 +43,20 @@ void	dala(t_data *img, double ray, int side, double r)
 	while (y < (1050 / 2) + (wall / 2))
 	{
 		j = (y - (1050 / 2) + (wall / 2)) * (img->ea.h / wall);
-		if (side == 1)
+		if (side == NORTH)
 			color = no_texture(img, j, r);
-		else if (side == 2)
+		else if (side == EAST)
 			color = ea_texture(img, j, r);
-		else if (side == 3)
+		else if (side == WEST)
 			color = we_texture(img, j, r);
-		else if (side == 4)
+		else if (side == SOUTH)
 			color = so_texture(img, j, r);
 		my_mlx_pixel_put(img, img->map->index, y, color);
 		y += 1;
 	}
 }
 
-void	draw_world(t_data *img)
+void	background(t_data *img)
 {
 	int	i;
 	int	j;

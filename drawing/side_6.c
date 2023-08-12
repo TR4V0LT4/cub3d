@@ -12,6 +12,15 @@
 
 #include "../cub.h"
 
+void	iteration6(t_data *img, t_ray *ray, float view)
+{
+	ray->ry += 1;
+	ray->rx = (ray->ry * tan(((3 * M_PI) / 2) - view));
+	ray->next_x = floor(img->map->x - ray->rx);
+	ray->next_y = floor(img->map->y + ray->ry);
+	ray->ray = sqrt(pow(ray->ry, 2) + pow(ray->rx, 2));
+}
+
 int	init_val6(t_data *img, t_ray *ray, float view)
 {
 	ray->line = ceil(img->map->y);
@@ -27,14 +36,7 @@ int	init_val6(t_data *img, t_ray *ray, float view)
 	return (0);
 }
 
-void	iteration6(t_data *img, t_ray *ray, float view)
-{
-	ray->ry += 1;
-	ray->rx = (ray->ry * tan(((3 * M_PI) / 2) - view));
-	ray->next_x = floor(img->map->x - ray->rx);
-	ray->next_y = floor(img->map->y + ray->ry);
-	ray->ray = sqrt(pow(ray->ry, 2) + pow(ray->rx, 2));
-}
+
 
 double	cast_rays6(t_data *img, float view, double *r)
 {
