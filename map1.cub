@@ -1,0 +1,11 @@
+     NO ./images/lava.xpm
+WE ./images/wall4.xpm
+F 231,110,13
+SO ./images/lava.xpm
+EA ./images/wal.xpm
+C 245,210,155
+
+11111111111111
+10000000000001
+100000S0000001
+11111111111111
